@@ -26,7 +26,7 @@ const main = async () => {
                 mailchimp_list_id,
                 mailchimp_segment_id,
                 {
-                    fields: ["members.merge_fields"]
+                    fields: ["members.merge_fields.FNAME", "members.merge_fields.LNAME", "members.merge_fields.DONORLEVEL", "members.merge_fields.DONORNAME"]
                 }
             );
             console.log(response);
