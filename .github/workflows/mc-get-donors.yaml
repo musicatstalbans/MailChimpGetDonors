@@ -10,7 +10,7 @@ jobs:
     name: Gets donors
     steps:
       - name: Get Donors
-        uses: steverhall/MailChimpGetdonors@main
+        uses: steverhall/MailChimpGetDonors@main
         with:
           mailchimp-token: ${{ secrets.MAILCHIMP_TOKEN }}
           mailchimp-server-prefix: ${{ secrets.MAILCHIMP_SERVER_PREFIX }}
