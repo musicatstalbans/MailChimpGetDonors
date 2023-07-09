@@ -24,7 +24,10 @@ const main = async () => {
         async function getDonors() {
             const response = await mailchimp.lists.getSegmentMembersList(
                 mailchimp_list_id,
-                mailchimp_segment_id
+                mailchimp_segment_id,
+                {
+                    fields: "members.merge_fields"
+                }
             );
             console.log(response);
         }
