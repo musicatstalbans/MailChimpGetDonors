@@ -33396,11 +33396,7 @@ var main = async () => {
     async function getDonors() {
       const response = await mailchimp.lists.getSegmentMembersList(
         "6e473b4f1d",
-        "10184741",
-        // Segment ID
-        {
-          fields: "members.merge_fields"
-        }
+        "10184741"
       );
       console.log(response);
     }
