@@ -1,0 +1,17 @@
+name: PR metadata annotation
+
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+
+  annotate-pr:
+    runs-on: ubuntu-latest
+    name: Gets donors
+    steps:
+      - name: Get Donors
+        uses: steverhall/MailChimpGetdonors@main
+        with:
+          mailchimp-token: ${{ secrets.MAILCHIMP_TOKEN }}
+          mailchimp-server-prefix: ${{ secrets.MAILCHIMP_SERVER_PREFIX }}

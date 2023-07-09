@@ -1,0 +1,26 @@
+{
+  "name": "mailchimpgetdonors",
+  "version": "1.0.0",
+  "description": "Retrieves donors from MailChimp API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musicatstalbans/MailChimpGetDonors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/musicatstalbans/MailChimpGetDonors/issues"
+  },
+  "homepage": "https://github.com/musicatstalbans/MailChimpGetDonors#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "esbuild": "0.18.11"
+  }
+}

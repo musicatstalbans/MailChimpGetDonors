@@ -1,0 +1,12 @@
+name: 'MailChimp Get Donors'
+description: 'Retrieves donors from MailChimp contacts, groups by donor level and writes YAML files'
+inputs:
+  mailchimp-token:
+    description: 'MailChimp API token'
+    required: true
+  mailchimp-server-prefix:
+    description: 'MailChimp server prefix (ex: us3)'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
