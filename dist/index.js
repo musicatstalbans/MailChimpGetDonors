@@ -33400,7 +33400,7 @@ var main = async () => {
         mailchimp_list_id,
         mailchimp_segment_id,
         {
-          fields: "members.merge_fields"
+          fields: ["members.merge_fields"]
         }
       );
       console.log(response);
