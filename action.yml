@@ -1,6 +1,12 @@
 name: 'MailChimp Get Donors'
 description: 'Retrieves donors from MailChimp contacts, groups by donor level and writes YAML files'
 inputs:
+  mailchimp-list-id:
+    description: 'ID of list'
+    required: true
+  mailchimp-segment-id:
+    description: 'Segment number'
+    required: true
   mailchimp-token:
     description: 'MailChimp API token'
     required: true

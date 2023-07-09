@@ -12,5 +12,7 @@ jobs:
       - name: Get Donors
         uses: musicatstalbans/MailChimpGetDonors@main
         with:
+          mailchimp-list-id: ${{ secrets.MAILCHIMP_LIST_ID }}
+          mailchimp-segment-id: ${{ secrets.MAILCHIMP_SEGMENT_ID }}
           mailchimp-token: ${{ secrets.MAILCHIMP_TOKEN }}
           mailchimp-server-prefix: ${{ secrets.MAILCHIMP_SERVER_PREFIX }}

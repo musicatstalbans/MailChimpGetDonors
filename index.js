@@ -4,8 +4,11 @@ const mailchimp = require('@mailchimp/mailchimp_marketing');
 
 const main = async () => {
     try {
+        const mailchimp_list_id = core.getInput('mailchimp-list-id', { required: true });
+        const mailchimp_segment_id = core.getInput('mailchimp-segment-id', { required: true });
         const mailchimp_token = core.getInput('mailchimp-token', { required: true });
         const mailchimp_server_prefix = core.getInput('mailchimp-server-prefix', { required: true });
+
 
 
         mailchimp.setConfig({
@@ -20,8 +23,8 @@ const main = async () => {
 
         async function getDonors() {
             const response = await mailchimp.lists.getSegmentMembersList(
-                "6e473b4f1d",
-                "10184741"
+                mailchimp_list_id,
+                mailchimp_segment_id
             );
             console.log(response);
         }
