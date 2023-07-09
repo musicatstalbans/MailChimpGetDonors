@@ -1,4 +1,4 @@
-name: PR metadata annotation
+name: MailChimp Get Donors
 
 on: 
   workflow_dispatch:
