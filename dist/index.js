@@ -33393,7 +33393,18 @@ var main = async () => {
       const response = await mailchimp.ping.get();
       console.log(response);
     }
-    callPing();
+    async function getDonors() {
+      const response = await mailchimp.lists.getSegmentMembersList(
+        "6e473b4f1d",
+        "10184741",
+        // Segment ID
+        {
+          fields: "members.merge_fields"
+        }
+      );
+      console.log(response);
+    }
+    getDonors();
   } catch (error) {
     core.setFailed(error.message);
   }
