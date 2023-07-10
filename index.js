@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const mailchimp = require('@mailchimp/mailchimp_marketing');
+const axios = require('axios');
 
 const main = async () => {
     try {
@@ -8,8 +9,6 @@ const main = async () => {
         const mailchimp_segment_id = core.getInput('mailchimp-segment-id', { required: true });
         const mailchimp_token = core.getInput('mailchimp-token', { required: true });
         const mailchimp_server_prefix = core.getInput('mailchimp-server-prefix', { required: true });
-
-
 
         mailchimp.setConfig({
             apiKey: mailchimp_token,
@@ -22,14 +21,22 @@ const main = async () => {
         }
 
         async function getDonors() {
-            const response = await mailchimp.lists.getSegmentMembersList(
-                mailchimp_list_id,
-                mailchimp_segment_id,
-                {
-                    fields: ["members.merge_fields.FNAME", "members.merge_fields.LNAME", "members.merge_fields.DONORLEVEL", "members.merge_fields.DONORNAME"]
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: 'https://us3.api.mailchimp.com/3.0/lists/' + mailchimp_list_id + '/segments/' + mailchimp_segment_id + '/members?fields=members.merge_fields',
+                headers: {
+                    'Authorization': 'Bearer ' + mailchimp_token
                 }
-            );
-            console.log(response);
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
 
         getDonors();
