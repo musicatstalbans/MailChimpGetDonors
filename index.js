@@ -22,7 +22,7 @@ const main = async () => {
             console.log(response);
         }
 
-        retrieveDonors(mailchimp_list_id, mailchimp_segment_id);
+        retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token);
 
     } catch (error) {
         core.setFailed(error.message);

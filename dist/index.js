@@ -37066,7 +37066,7 @@ var donors_exports = {};
 __export(donors_exports, {
   default: () => donors_default
 });
-function retrieveDonors(mailchimp_list_id, mailchimp_segment_id) {
+function retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token) {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
@@ -37159,17 +37159,17 @@ var main = async () => {
   try {
     const mailchimp_list_id = core.getInput("mailchimp-list-id", { required: true });
     const mailchimp_segment_id = core.getInput("mailchimp-segment-id", { required: true });
-    const mailchimp_token2 = core.getInput("mailchimp-token", { required: true });
+    const mailchimp_token = core.getInput("mailchimp-token", { required: true });
     const mailchimp_server_prefix = core.getInput("mailchimp-server-prefix", { required: true });
     mailchimp.setConfig({
-      apiKey: mailchimp_token2,
+      apiKey: mailchimp_token,
       server: mailchimp_server_prefix
     });
     async function callPing() {
       const response = await mailchimp.ping.get();
       console.log(response);
     }
-    retrieveDonors2(mailchimp_list_id, mailchimp_segment_id);
+    retrieveDonors2(mailchimp_list_id, mailchimp_segment_id, mailchimp_token);
   } catch (error) {
     core.setFailed(error.message);
   }

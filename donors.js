@@ -3,7 +3,7 @@ const axios = require('axios');
 
 //let data = {"members":[{"merge_fields":{"FNAME":"Howard","LNAME":"Steinfield","DONORLEVEL":"Sustainers","ADDRESS":"","DONORNAME":""}},{"merge_fields":{"FNAME":"Steve & Susan","LNAME":"Hall","DONORLEVEL":"Patrons","ADDRESS":"","DONORNAME":"Steve & Susan Hall"}},{"merge_fields":{"FNAME":"Bob & Deb","LNAME":"Cameron","DONORLEVEL":"Patrons","ADDRESS":"","DONORNAME":""}},{"merge_fields":{"FNAME":"Nora","LNAME":"Shepard","DONORLEVEL":"Artists Circle","ADDRESS":"","DONORNAME":""}},{"merge_fields":{"FNAME":"Dave","LNAME":"Cable","DONORLEVEL":"Patrons","ADDRESS":{"addr1":"PO Box 250","addr2":"","city":"Davidson","state":"NC","zip":"28036","country":"US"},"DONORNAME":""}},{"merge_fields":{"FNAME":"Libby","LNAME":"Cable","DONORLEVEL":"Patrons","ADDRESS":{"addr1":"PO Box 250","addr2":"","city":"Davidson","state":"NC","zip":"28036","country":"US"},"DONORNAME":""}}]}
 
-function retrieveDonors(mailchimp_list_id, mailchimp_segment_id) {
+function retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token) {
     let config = {
         method: 'get',
         maxBodyLength: Infinity,
