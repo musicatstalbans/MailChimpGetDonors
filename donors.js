@@ -15,10 +15,7 @@ function retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token
 
     axios.request(config)
         .then((response) => {
-            let donors = JSON.stringify(response.data);
-            console.log('Received donors from Mailchimp')
-            console.log(donors);
-            processDonors(donors);
+            processDonors(response.data);
         })
         .catch((error) => {
             console.log(error);

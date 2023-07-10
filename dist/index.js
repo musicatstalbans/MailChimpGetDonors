@@ -37076,10 +37076,7 @@ function retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token
     }
   };
   axios.request(config).then((response) => {
-    let donors2 = JSON.stringify(response.data);
-    console.log("Received donors from Mailchimp");
-    console.log(donors2);
-    processDonors(donors2);
+    processDonors(response.data);
   }).catch((error) => {
     console.log(error);
   });
