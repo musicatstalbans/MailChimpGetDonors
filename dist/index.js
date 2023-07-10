@@ -518,7 +518,7 @@ var require_file_command = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
-    var fs = __importStar(require("fs"));
+    var fs2 = __importStar(require("fs"));
     var os = __importStar(require("os"));
     var uuid_1 = (init_esm_node(), __toCommonJS(esm_node_exports));
     var utils_1 = require_utils();
@@ -527,10 +527,10 @@ var require_file_command = __commonJS({
       if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
       }
-      if (!fs.existsSync(filePath)) {
+      if (!fs2.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
       }
-      fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+      fs2.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
         encoding: "utf8"
       });
     }
@@ -8237,7 +8237,7 @@ var require_file = __commonJS({
     if (global.GENTLY)
       require = GENTLY.hijack(require);
     var util = require("util");
-    var fs = require("fs");
+    var fs2 = require("fs");
     var EventEmitter = require("events").EventEmitter;
     var crypto4 = require("crypto");
     function File2(properties) {
@@ -8261,7 +8261,7 @@ var require_file = __commonJS({
     module2.exports = File2;
     util.inherits(File2, EventEmitter);
     File2.prototype.open = function() {
-      this._writeStream = new fs.WriteStream(this.path);
+      this._writeStream = new fs2.WriteStream(this.path);
     };
     File2.prototype.toJSON = function() {
       var json = {
@@ -8672,7 +8672,7 @@ var require_incoming_form = __commonJS({
     if (global.GENTLY)
       require = GENTLY.hijack(require);
     var crypto4 = require("crypto");
-    var fs = require("fs");
+    var fs2 = require("fs");
     var util = require("util");
     var path = require("path");
     var File2 = require_file();
@@ -8912,7 +8912,7 @@ var require_incoming_form = __commonJS({
         this.openedFiles.forEach(function(file) {
           file._writeStream.on("error", function() {
           }).destroy();
-          setTimeout(fs.unlink, 0, file.path, function(error) {
+          setTimeout(fs2.unlink, 0, file.path, function(error) {
           });
         });
       }
@@ -18227,7 +18227,7 @@ var require_form_data = __commonJS({
     var http = require("http");
     var https = require("https");
     var parseUrl = require("url").parse;
-    var fs = require("fs");
+    var fs2 = require("fs");
     var mime = require_mime_types();
     var asynckit = require_asynckit();
     var populate = require_populate();
@@ -18291,7 +18291,7 @@ var require_form_data = __commonJS({
         if (value.end != void 0 && value.end != Infinity && value.start != void 0) {
           callback(null, value.end + 1 - (value.start ? value.start : 0));
         } else {
-          fs.stat(value.path, function(err, stat) {
+          fs2.stat(value.path, function(err, stat) {
             var fileSize;
             if (err) {
               callback(err);
@@ -18875,7 +18875,7 @@ var require_types = __commonJS({
 var require_mime = __commonJS({
   "node_modules/mime/mime.js"(exports, module2) {
     var path = require("path");
-    var fs = require("fs");
+    var fs2 = require("fs");
     function Mime() {
       this.types = /* @__PURE__ */ Object.create(null);
       this.extensions = /* @__PURE__ */ Object.create(null);
@@ -18896,7 +18896,7 @@ var require_mime = __commonJS({
     };
     Mime.prototype.load = function(file) {
       this._loading = file;
-      var map = {}, content = fs.readFileSync(file, "ascii"), lines = content.split(/[\r\n]+/);
+      var map = {}, content = fs2.readFileSync(file, "ascii"), lines = content.split(/[\r\n]+/);
       lines.forEach(function(line) {
         var fields = line.replace(/\s*#.*|^\s*|\s*$/g, "").split(/\s+/);
         map[fields.shift()] = fields;
@@ -21670,7 +21670,7 @@ var require_node2 = __commonJS({
     var mime = require_mime();
     var https = require("https");
     var http = require("http");
-    var fs = require("fs");
+    var fs2 = require("fs");
     var qs = require_lib5();
     var zlib = require("zlib");
     var util = require("util");
@@ -21749,7 +21749,7 @@ var require_node2 = __commonJS({
           if (!o.filename)
             o.filename = file;
           debug("creating `fs.ReadStream` instance for file: %s", file);
-          file = fs.createReadStream(file);
+          file = fs2.createReadStream(file);
         } else if (!o.filename && file.path) {
           o.filename = file.path;
         }
@@ -33136,12 +33136,12 @@ var require_ApiClient = __commonJS({
     };
     exports.prototype.isFileParam = function(param) {
       if (typeof require === "function") {
-        var fs;
+        var fs2;
         try {
-          fs = require("fs");
+          fs2 = require("fs");
         } catch (err) {
         }
-        if (fs && fs.ReadStream && param instanceof fs.ReadStream) {
+        if (fs2 && fs2.ReadStream && param instanceof fs2.ReadStream) {
           return true;
         }
       }
@@ -33398,7 +33398,7 @@ var require_form_data2 = __commonJS({
     var http = require("http");
     var https = require("https");
     var parseUrl = require("url").parse;
-    var fs = require("fs");
+    var fs2 = require("fs");
     var Stream = require("stream").Stream;
     var mime = require_mime_types();
     var asynckit = require_asynckit();
@@ -33463,7 +33463,7 @@ var require_form_data2 = __commonJS({
         if (value.end != void 0 && value.end != Infinity && value.start != void 0) {
           callback(null, value.end + 1 - (value.start ? value.start : 0));
         } else {
-          fs.stat(value.path, function(err, stat) {
+          fs2.stat(value.path, function(err, stat) {
             var fileSize;
             if (err) {
               callback(err);
@@ -37061,41 +37061,115 @@ var require_axios = __commonJS({
   }
 });
 
+// donors.js
+var donors_exports = {};
+__export(donors_exports, {
+  default: () => donors_default
+});
+function retrieveDonors(mailchimp_list_id, mailchimp_segment_id) {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "https://us3.api.mailchimp.com/3.0/lists/" + mailchimp_list_id + "/segments/" + mailchimp_segment_id + "/members?fields=members.merge_fields",
+    headers: {
+      "Authorization": "Bearer " + mailchimp_token
+    }
+  };
+  axios.request(config).then((response) => {
+    let donors2 = JSON.stringify(response.data);
+    processDonors(donors2);
+  }).catch((error) => {
+    console.log(error);
+  });
+}
+function processDonors(data) {
+  let donors2 = data.members.map((member) => {
+    return {
+      name: member.merge_fields.DONORNAME || member.merge_fields.FNAME + " " + member.merge_fields.LNAME,
+      level: member.merge_fields.DONORLEVEL,
+      lastname: member.merge_fields.LNAME
+    };
+  }).sort(
+    (a, b) => {
+      return a.lastname.localeCompare(b.lastname);
+    }
+  );
+  let patrons = donors2.filter((donor) => {
+    return donor.level === "Patrons";
+  });
+  let artistscircle = donors2.filter((donor) => {
+    return donor.level === "Artists Circle";
+  });
+  let sustainers = donors2.filter((donor) => {
+    return donor.level === "Sustainers";
+  });
+  let friends = donors2.filter((donor) => {
+    return donor.level === "Friends";
+  });
+  let benefactors = donors2.filter((donor) => {
+    return donor.level === "Benefactors";
+  });
+  let composerssociety = donors2.filter((donor) => {
+    return donor.level === "Composers Society";
+  });
+  writeDonorFile(patrons, "_data/benefactors/patrons.yml");
+  writeDonorFile(artistscircle, "_data/benefactors/artistscircle.yml");
+  writeDonorFile(sustainers, "_data/benefactors/sustainers.yml");
+  writeDonorFile(friends, "_data/benefactors/friends.yml");
+  writeDonorFile(benefactors, "_data/benefactors/benefactors.yml");
+  writeDonorFile(composerssociety, "_data/benefactors/composerssociety.yml");
+}
+function writeDonorFile(data, filename) {
+  let filedata = "";
+  data.forEach((donor) => {
+    filedata += "- name: " + donor.name + "\n";
+  });
+  fs.open(filename, "w+", (err, fd) => {
+    if (err) {
+      throw "could not open donor file for writing: " + err;
+    }
+    fs.write(fd, filedata, (err2, written, string) => {
+      if (err2) {
+        throw "error writing donor file: " + err2;
+      }
+      fs.close(fd, (err3) => {
+        if (err3) {
+          throw "error closing donor file: " + err3;
+        }
+      });
+    });
+  });
+}
+var fs, axios, donors_default;
+var init_donors = __esm({
+  "donors.js"() {
+    fs = require("fs");
+    axios = require_axios();
+    donors_default = retrieveDonors;
+  }
+});
+
 // index.js
 var core = require_core();
 var github = require_github();
 var mailchimp = require_src3();
-var axios = require_axios();
+var donors = (init_donors(), __toCommonJS(donors_exports));
+var { default: retrieveDonors2 } = (init_donors(), __toCommonJS(donors_exports));
 var main = async () => {
   try {
     const mailchimp_list_id = core.getInput("mailchimp-list-id", { required: true });
     const mailchimp_segment_id = core.getInput("mailchimp-segment-id", { required: true });
-    const mailchimp_token = core.getInput("mailchimp-token", { required: true });
+    const mailchimp_token2 = core.getInput("mailchimp-token", { required: true });
     const mailchimp_server_prefix = core.getInput("mailchimp-server-prefix", { required: true });
     mailchimp.setConfig({
-      apiKey: mailchimp_token,
+      apiKey: mailchimp_token2,
       server: mailchimp_server_prefix
     });
     async function callPing() {
       const response = await mailchimp.ping.get();
       console.log(response);
     }
-    async function getDonors() {
-      let config = {
-        method: "get",
-        maxBodyLength: Infinity,
-        url: "https://us3.api.mailchimp.com/3.0/lists/" + mailchimp_list_id + "/segments/" + mailchimp_segment_id + "/members?fields=members.merge_fields",
-        headers: {
-          "Authorization": "Bearer " + mailchimp_token
-        }
-      };
-      axios.request(config).then((response) => {
-        console.log(JSON.stringify(response.data));
-      }).catch((error) => {
-        console.log(error);
-      });
-    }
-    getDonors();
+    retrieveDonors2(mailchimp_list_id, mailchimp_segment_id);
   } catch (error) {
     core.setFailed(error.message);
   }
