@@ -52,8 +52,9 @@ function processDonors(data) {
 function writeDonorFile(data, filename) {
     // loop through the data and write to file
     let filedata = '';
-    data.forEach((donor) => {
-        filedata += '- name: ' + donor.name + '\n';
+    let names = [...new Set(data.map((donor) => { return donor.name }))];
+    names.forEach((donor) => {
+        filedata += '- name: ' + donor + '\n';
     });
     //open and write to file
     fs.open(filename, 'w+', (err, fd) => {

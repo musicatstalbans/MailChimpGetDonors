@@ -37120,8 +37120,11 @@ function processDonors(data) {
 }
 function writeDonorFile(data, filename) {
   let filedata = "";
-  data.forEach((donor) => {
-    filedata += "- name: " + donor.name + "\n";
+  let names = [...new Set(data.map((donor) => {
+    return donor.name;
+  }))];
+  names.forEach((donor) => {
+    filedata += "- name: " + donor + "\n";
   });
   fs.open(filename, "w+", (err, fd) => {
     if (err) {
