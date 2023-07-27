@@ -7,7 +7,7 @@ function retrieveDonors(mailchimp_list_id, mailchimp_segment_id, mailchimp_token
     let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'https://us3.api.mailchimp.com/3.0/lists/' + mailchimp_list_id + '/segments/' + mailchimp_segment_id + '/members?fields=members.merge_fields',
+        url: 'https://us3.api.mailchimp.com/3.0/lists/' + mailchimp_list_id + '/segments/' + mailchimp_segment_id + '/members?fields=members.merge_fields&count=1000',
         headers: {
             'Authorization': 'Bearer ' + mailchimp_token
         }
